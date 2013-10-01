@@ -1,0 +1,45 @@
+#content {
+  width: 300px;
+  height: 115px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -127px;
+  margin-left: -150px;
+  padding: 50px;
+  background: #3c0238;
+}
+#content input {
+  width: 250px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 50px;
+}
+#content input[type="password"] {
+  float: left;
+  width: 200px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.icon-wrapper {
+  padding: 16px 0 0 12px;
+  height: 34px;
+  width: 38px;
+  background: #e0e0e0;
+  float: left;
+}
+.icon-wrapper.left {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.icon-wrapper.left i {
+  color: #6e6e6e;
+}
+.icon-wrapper.right {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  background: #8e5cb8;
+}
+.icon-wrapper.right i {
+  color: #fff;
+}

@@ -1,0 +1,44 @@
+@import "../../../assets/bootstrap/mixins.less";
+
+#content {
+  width: 300px;
+  height: 115px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -127px;
+  margin-left: -150px;
+  padding: 50px;
+  background: #3c0238;
+  input {
+    width: 250px;
+    .border-left-radius(0);
+    height: 50px;
+    &[type="password"] {
+      float: left;
+      width: 200px;
+      .border-right-radius(0);
+    }
+  }
+}
+
+.icon-wrapper {
+  padding: 16px 0 0 12px;
+  height: 34px;
+  width: 38px;
+  background: #e0e0e0;
+  float: left;
+  &.left {
+    .border-left-radius(4px);
+    i{
+      color: #6e6e6e;
+    }
+  }
+  &.right {
+    .border-right-radius(4px);
+    background: #8e5cb8;
+    i {
+      color: #fff;
+    }
+  }
+}
