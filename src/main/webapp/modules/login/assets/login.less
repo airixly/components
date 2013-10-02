@@ -1,24 +1,38 @@
 @import "../../../assets/bootstrap/mixins.less";
 
-#content {
+.login-panel {
+  width: 100%;
+  height: 100%;
+}
+
+.login {
   width: 300px;
   height: 115px;
-  position: relative;
+  position: fixed;
   top: 50%;
   left: 50%;
   margin-top: -127px;
   margin-left: -150px;
   padding: 50px;
-  background: #3c0238;
+  background: #502f52;
   input {
-    width: 250px;
+    width: 224px;
     .border-left-radius(0);
-    height: 50px;
+    height: 36px;
     &[type="password"] {
       float: left;
-      width: 200px;
+      width: 174px;
       .border-right-radius(0);
     }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #502f52;
+    left: 30px;
+    top: 215px;
   }
 }
 
@@ -28,10 +42,14 @@
   width: 38px;
   background: #e0e0e0;
   float: left;
+  font-size: 120%;
   &.left {
     .border-left-radius(4px);
-    i{
+    i {
       color: #6e6e6e;
+      &.icon-attention-circled {
+        color: #fff;
+      }
     }
   }
   &.right {
@@ -41,4 +59,14 @@
       color: #fff;
     }
   }
+}
+
+#sign-in {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  color: #502f52;
+  font: 30px/32px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  margin-left: -120px;
+  margin-top: 100px;
 }
