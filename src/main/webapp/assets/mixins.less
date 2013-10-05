@@ -4,8 +4,65 @@
   -moz-border-radius: @radius;
 }
 
-.transform-rotate(@deg){
+.transform-rotate(@deg) {
   -webkit-transform: rotate(@deg);
   -moz-transform: rotate(@deg);
   -ms-transform: rotate(@deg);
 }
+
+.linear-gradient(@side;@color-stop){
+  background-image:-webkit-linear-gradient(@side,@color-stop);
+  background-image:-moz-linear-gradient(@side,@color-stop);
+  background-image:-ms-linear-gradient(@side,@color-stop);
+  background-image:linear-gradient(@side,@color-stop);
+
+}
+.animate-bar {
+  -moz-animation: slide 2s infinite linear;
+  -o-animation: slide 2s infinite linear;
+  -webkit-animation: slide 2s infinite linear;
+  animation: slide 2s infinite linear;
+  display: block;
+  position: relative;
+}
+
+@-moz-keyframes slide {
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@-webkit-keyframes slide {
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@-ms-keyframes slide {
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+
+@keyframes slide {
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+

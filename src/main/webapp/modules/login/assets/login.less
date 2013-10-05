@@ -1,9 +1,25 @@
 @import "../../../assets/bootstrap/less/mixins.less";
+@import "../../../assets/mixins.less";
+@import "../../../assets/variables.less";
 
 .login-panel {
   width: 100%;
   height: 100%;
   font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  .bar-wrapper {
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -133px;
+    margin-left: -150px;
+    width: 400px;
+    .color-bar {
+      width: 800px;
+      height: 6px;
+      .linear-gradient(left, @color-bar);
+    }
+  }
 }
 
 .login {

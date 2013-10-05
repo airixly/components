@@ -1776,10 +1776,67 @@ textarea.input-lg {
   border-left-color: #ffffff;
   bottom: -10px;
 }
+.animate-bar {
+  -moz-animation: slide 2s infinite linear;
+  -o-animation: slide 2s infinite linear;
+  -webkit-animation: slide 2s infinite linear;
+  animation: slide 2s infinite linear;
+  display: block;
+  position: relative;
+}
+@-moz-keyframes slide {
+  0% {
+    left: -400px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    left: -400px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@-ms-keyframes slide {
+  0% {
+    left: -400px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes slide {
+  0% {
+    left: -400px;
+  }
+  100% {
+    left: 0px;
+  }
+}
 .login-panel {
   width: 100%;
   height: 100%;
   font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+.login-panel .bar-wrapper {
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -133px;
+  margin-left: -150px;
+  width: 400px;
+}
+.login-panel .bar-wrapper .color-bar {
+  width: 800px;
+  height: 6px;
+  background-image: -webkit-linear-gradient(left, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8);
+  background-image: -moz-linear-gradient(left, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8);
+  background-image: -ms-linear-gradient(left, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8);
+  background-image: linear-gradient(left, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8, #f0c8fa, #edf2d7, #eaffeb, #90d6eb, #d490eb, #f5bfe8);
 }
 .login {
   width: 300px;
