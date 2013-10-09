@@ -1,6 +1,5 @@
 package com.airixly.components;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +9,9 @@ import org.slf4j.LoggerFactory;
  */
 public class MyLogger {
     public static void main(String[] args) {
-        Logger logger = LoggerFactory.getLogger(MyLogger.class);
-        PropertyConfigurator.configure("log4j.properties");
-        logger.info("Hello World");
+//        Logger logger = LoggerFactory.getLogger(MyLogger.class);
+//
+//        PropertyConfigurator.configure("log4j.properties");
+//        logger.info("Hello World");
     }
 }
