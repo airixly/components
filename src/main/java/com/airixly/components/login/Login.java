@@ -14,6 +14,9 @@ import java.util.Map;
  */
 public class Login extends HttpServlet {
     public void doPost(HttpServletRequest request,HttpServletResponse response){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        System.out.println(username+"---"+password);
         response.setContentType("text/html");
         try {
             PrintWriter pw = response.getWriter();
