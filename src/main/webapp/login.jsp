@@ -12,9 +12,16 @@
 <script>
     require([
         "jquery",
+        "backbone",
         "modules/login/index"
-    ], function ($, login) {
+    ], function ($, Backbone, login) {
         $(function () {
+
+            //global settings
+            Backbone.emulateHTTP = true;
+            Backbone.emulateJSON = true;
+
+            //render login component
             login.init();
         });
     });

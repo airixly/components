@@ -79,16 +79,7 @@ define([
                     self.$("i.icon-spinner").hide().siblings(".icon-right").show();
                 }
             };
-//            this.model.save(null, options);
-            $.ajax({
-                url:"login.do",
-                dataType:"json",
-                type:"post",
-                data:{
-                    username:this.model.get("username"),
-                    password:this.model.get("password")
-                }
-            })  ;
+            this.model.save(null, options);
         }
     });
 });

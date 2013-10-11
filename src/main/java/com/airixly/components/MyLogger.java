@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * User: Lyanxi
+ * User: Airixly
  * Date: 13-10-7
  */
 public class MyLogger {

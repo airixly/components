@@ -8,9 +8,15 @@
     require([
         "domReady!",
         "jquery",
+        "backbone",
         "app"
-    ], function (doc, $, app) {
+    ], function (doc, $, Backbone, app) {
         $(function () {
+            //global settings
+            Backbone.emulateHTTP = true;
+            Backbone.emulateJSON = true;
+
+            //init all components
             app.initApp();
         });
     });
