@@ -73,7 +73,7 @@ define([
             self.$("i.icon-right").hide().siblings(".icon-spinner").show();
             options = {
                 success: function () {
-
+                    self.$("input").attr("disabled", "disabled");
                 },
                 error: function (model, resp) {
                     self.$("i.icon-spinner").hide().siblings(".icon-right").show();

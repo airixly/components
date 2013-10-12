@@ -8,10 +8,12 @@ import org.slf4j.LoggerFactory;
  * Date: 13-10-7
  */
 public class MyLogger {
+    private static final Logger logger = LoggerFactory.getLogger(MyLogger.class);
+
     public static void main(String[] args) {
-//        Logger logger = LoggerFactory.getLogger(MyLogger.class);
-//
-//        PropertyConfigurator.configure("log4j.properties");
-//        logger.info("Hello World");
+        logger.debug("Start debug");
+        logger.info("Start info");
+        logger.warn("Start warn");
+        logger.error("Start error");
     }
 }
