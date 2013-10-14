@@ -72,8 +72,9 @@ define([
             }
             self.$("i.icon-right").hide().siblings(".icon-spinner").show();
             options = {
-                success: function () {
+                success: function (data) {
                     self.$("input").attr("disabled", "disabled");
+                    window.location.href = "index.jsp?id=" + data.id;
                 },
                 error: function (model, resp) {
                     self.$("i.icon-spinner").hide().siblings(".icon-right").show();

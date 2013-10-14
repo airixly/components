@@ -1,9 +1,13 @@
 <html>
 <meta>
 <title></title>
-<script src="vendor/require/require.js"></script>
+<script src="./vendor/require/require.js"></script>
 <script src="./main.js"></script>
 <body>
+<div>
+    <h3>Login info:<%=request.getParameter("id")%>
+    </h3>
+</div>
 <script>
     require([
         "domReady!",

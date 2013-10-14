@@ -4,7 +4,6 @@
          version="3.0">
     <servlet>
         <servlet-name>app</servlet-name>
-        <!--<servlet-class>com.airixly.components.login.Login</servlet-class>-->
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
