@@ -70,17 +70,30 @@ define([
             if (!this.valName() || !this.valPassword()) {
                 return;
             }
-            self.$("i.icon-right").hide().siblings(".icon-spinner").show();
+            this.hideEdit();
             options = {
-                success: function (data) {
-                    self.$("input").attr("disabled", "disabled");
-                    window.location.href = "index.jsp?id=" + data.id;
+                success: function (model, resp) {
+                    if (model.isNew()) {
+                        //TODO
+                        //login failed
+                        self.showEdit();
+                    } else {
+                        window.location.href = "index.jsp?id=" + model.id + "&name=" + model.get("username");
+                    }
                 },
                 error: function (model, resp) {
-                    self.$("i.icon-spinner").hide().siblings(".icon-right").show();
+                    self.showEdit();
                 }
             };
             this.model.save(null, options);
+        },
+        showEdit: function () {
+            this.$(".icon-spinner").hide().siblings("i.icon-right").show();
+            this.$("input").attr("disabled", "none");
+        },
+        hideEdit: function () {
+            this.$("i.icon-right").hide().siblings(".icon-spinner").show();
+            this.$("input").attr("disabled", "disabled");
         }
     });
 });

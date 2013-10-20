@@ -5,7 +5,7 @@
 <script src="./main.js"></script>
 <body>
 <div>
-    <h3>Login info:<%=request.getParameter("id")%>
+    <h3>Login info:id--<%=request.getParameter("id")%>&name--<%=request.getParameter("name")%>
     </h3>
 </div>
 <script>
