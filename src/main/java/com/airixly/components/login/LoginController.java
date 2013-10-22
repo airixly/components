@@ -36,17 +36,27 @@ public class LoginController {
         session.beginTransaction();
         String hql = "from UserInfo where username='" + user.getUsername() + "'";
         Query query = session.createQuery(hql);
-        List results = query.list();
 
         //check if user is valid
-        String message = "{}";
-        if (results.size() > 0) {
-            UserInfo result = (UserInfo) results.get(0);
-            if (user.getPassword().equals(result.getPassword())) {
-                message = gson.toJson(result);
+        String message = null;
+        try {
+            List results = query.list();
+            if (results.size() > 0) {
+                UserInfo result = (UserInfo) results.get(0);
+                if (user.getPassword().equals(result.getPassword())) {
+                    message = gson.toJson(result);
+                } else {
+                    //password is wrong
+                    message = "err-1";
+                }
+            } else {
+                //username doesn't exist
+                message = "err-0";
             }
+            session.close();
+        } catch (Exception ex) {
+            message = ex.getMessage().toString();
         }
-        session.close();
         return message;
     }
 }

@@ -26,11 +26,7 @@ define([
                 $userIcon.css("background", "#d2322d")
                     .find("i.icon-user-1").hide()
                     .siblings(".icon-attention-circled").show();
-                $target.popover({
-                    content: "Username is invalid!",
-                    trigger: "manual"
-                });
-                $target.popover("show");
+                this.showPopover($target, "Username is invalid!");
                 return false;
             } else if ($userIcon.find("i.icon-attention-circled").is(":visible")) {
                 $userIcon.css("background", "#e0e0e0")
@@ -47,17 +43,20 @@ define([
             var password = this.$(".password input").val(),
                 $submitIcon = this.$(".icons-wrapper.right");
             if (password.length === 0) {
-                $submitIcon.popover({
-                    content: "Password can't be empty!",
-                    trigger: "manual"
-                });
-                $submitIcon.popover("show");
+                this.showPopover($submitIcon, "Password can't be empty!");
                 return false;
             } else if ($submitIcon.siblings(".popover").length !== 0) {
                 $submitIcon.popover("hide");
             }
             this.model.set("password", password);
             return true;
+        },
+        showPopover: function ($target, content) {
+            $target.popover({
+                content: content,
+                trigger: "manual"
+            });
+            $target.popover("show");
         },
         enter: function (e) {
             if (e && e.which !== 13) {
@@ -72,28 +71,35 @@ define([
             }
             this.hideEdit();
             options = {
-                success: function (model, resp) {
-                    if (model.isNew()) {
-                        //TODO
-                        //login failed
-                        self.showEdit();
-                    } else {
-                        window.location.href = "index.jsp?id=" + model.id + "&name=" + model.get("username");
-                    }
+                success: function () {
+                    window.location.href = "index.jsp?id=" + this.model.id + "&name=" + this.model.get("username");
                 },
                 error: function (model, resp) {
-                    self.showEdit();
+                    self.handleErrorMessage(resp.responseText);
                 }
             };
             this.model.save(null, options);
         },
         showEdit: function () {
             this.$(".icon-spinner").hide().siblings("i.icon-right").show();
-            this.$("input").attr("disabled", "none");
+            this.$("input").prop("disabled", false);
         },
         hideEdit: function () {
             this.$("i.icon-right").hide().siblings(".icon-spinner").show();
-            this.$("input").attr("disabled", "disabled");
+            this.$("input").prop("disabled", true);
+        },
+        handleErrorMessage: function (message) {
+            switch (message) {
+                case "err-0":
+                    this.showPopover(this.$(".username input"), "Username doesn't exist!");
+                    break;
+                case "err-1":
+                    this.showPopover(this.$(".icons-wrapper.right"), "Password is wrong!");
+                    break;
+                default:
+                    console.log(message);
+            }
+            this.showEdit();
         }
     });
 });
