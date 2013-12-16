@@ -72,7 +72,7 @@ define([
             this.hideEdit();
             options = {
                 success: function () {
-                    window.location.href = "index.jsp?id=" + this.model.id + "&name=" + this.model.get("username");
+                    window.location.href = "index.jsp?id=" + self.model.id + "&name=" + self.model.get("username");
                 },
                 error: function (model, resp) {
                     self.handleErrorMessage(resp.responseText);
