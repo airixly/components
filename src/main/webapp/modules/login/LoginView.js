@@ -7,7 +7,7 @@ define([
     return Backbone.View.extend({
         className: "login-panel",
         model: new (Backbone.Model.extend({
-            url: "login.do"
+            url: "loginAuth.do"
         }))(),
         events: {
             "input .username input": "valName",
@@ -69,10 +69,10 @@ define([
             if (!this.valName() || !this.valPassword()) {
                 return;
             }
-            this.hideEdit();
+            this.showEdit(false);
             options = {
                 success: function () {
-                    window.location.href = "index.jsp?id=" + self.model.id + "&name=" + self.model.get("username");
+                    self.$(".login-form").submit();
                 },
                 error: function (model, resp) {
                     self.handleErrorMessage(resp.responseText);
@@ -80,13 +80,9 @@ define([
             };
             this.model.save(null, options);
         },
-        showEdit: function () {
-            this.$(".icon-spinner").hide().siblings("i.icon-right").show();
-            this.$("input").prop("disabled", false);
-        },
-        hideEdit: function () {
-            this.$("i.icon-right").hide().siblings(".icon-spinner").show();
-            this.$("input").prop("disabled", true);
+        showEdit: function (isArrow) {
+            var $icon = $(isArrow ? ".icon-arrows-cw" : ".icon-right");
+            $icon.hide().siblings("i").show();
         },
         handleErrorMessage: function (message) {
             switch (message) {
@@ -99,7 +95,7 @@ define([
                 default:
                     console.log(message);
             }
-            this.showEdit();
+            this.showEdit(true);
         }
     });
 });

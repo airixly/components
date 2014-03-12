@@ -2,14 +2,14 @@
     <div class="color-bar animate-bar"></div>
 </div>
 <div class="login">
-    <form role="form">
+    <form class="login-form" role="form" action="login.do" method="post">
         <div class="form-group">
             <div class="username">
                 <div class="icons-wrapper left">
                     <i class="icon-user-1"></i>
                     <i class="icon-attention-circled" style="display: none;"></i>
                 </div>
-                <input type="text" class="form-control" placeholder="Username"/>
+                <input name="username" type="text" class="form-control" placeholder="Username"/>
             </div>
         </div>
         <div class="form-group">
@@ -17,12 +17,12 @@
                 <div class="icons-wrapper left">
                     <i class="icon-lock"></i>
                 </div>
-                <input type="password" class="form-control" placeholder="Password"/>
+                <input name="password" type="password" class="form-control" placeholder="Password"/>
 
-                <div class="icons-wrapper right">
+                <button class="icons-wrapper right btn submit-btn" type="button">
                     <i class="icon-right"></i>
                     <i class="icon-arrows-cw animate-spin" style="display: none;"></i>
-                </div>
+                </button>
             </div>
         </div>
     </form>

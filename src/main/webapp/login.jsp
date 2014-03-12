@@ -8,7 +8,9 @@
     <script type="text/javascript" src="./main.js"></script>
 </head>
 <body>
-<div id="content"></div>
+<div id="content">
+</div>
+
 <script>
     require([
         "jquery",
@@ -26,5 +28,6 @@
         });
     });
 </script>
+
 </body>
 </html>

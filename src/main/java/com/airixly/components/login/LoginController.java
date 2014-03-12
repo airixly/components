@@ -9,9 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -23,13 +28,11 @@ import java.util.List;
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    @RequestMapping("/login.do")
-    public
-    @ResponseBody
-    String login(@RequestParam String model) {
+    @RequestMapping("/loginAuth.do")
+    public void loginAuth(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //parse request model
         Gson gson = new Gson();
-        UserInfo user = gson.fromJson(model, UserInfo.class);
+        UserInfo user = gson.fromJson(request.getParameter("model"), UserInfo.class);
 
         //get the record from database
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -44,6 +47,9 @@ public class LoginController {
             if (results.size() > 0) {
                 UserInfo result = (UserInfo) results.get(0);
                 if (user.getPassword().equals(result.getPassword())) {
+                    Cookie cookie = new Cookie("uid", result.getId());
+                    cookie.setMaxAge(1800);
+                    response.addCookie(cookie);
                     message = gson.toJson(result);
                 } else {
                     //password is wrong
@@ -57,6 +63,19 @@ public class LoginController {
         } catch (Exception ex) {
             message = ex.getMessage().toString();
         }
-        return message;
+        PrintWriter writer = response.getWriter();
+        writer.println(message);
+    }
+
+    @RequestMapping("/login.do")
+    public void login(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+        try {
+            view.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
