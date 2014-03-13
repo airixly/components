@@ -29,7 +29,7 @@ public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @RequestMapping("/loginAuth.do")
-    public void loginAuth(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void loginAuth(HttpServletRequest request, HttpServletResponse response) {
         //parse request model
         Gson gson = new Gson();
         UserInfo user = gson.fromJson(request.getParameter("model"), UserInfo.class);
@@ -63,8 +63,13 @@ public class LoginController {
         } catch (Exception ex) {
             message = ex.getMessage().toString();
         }
-        PrintWriter writer = response.getWriter();
-        writer.println(message);
+        PrintWriter writer = null;
+        try {
+            writer = response.getWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        writer.print(message);
     }
 
     @RequestMapping("/login.do")

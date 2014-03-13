@@ -85,6 +85,7 @@ define([
             $icon.hide().siblings("i").show();
         },
         handleErrorMessage: function (message) {
+            this.$(".username input").add(this.$(".icons-wrapper.right")).popover("destroy");
             switch (message) {
                 case "err-0":
                     this.showPopover(this.$(".username input"), "Username doesn't exist!");
@@ -93,7 +94,7 @@ define([
                     this.showPopover(this.$(".icons-wrapper.right"), "Password is wrong!");
                     break;
                 default:
-                    console.log(message);
+                    console.error(message);
             }
             this.showEdit(true);
         }
